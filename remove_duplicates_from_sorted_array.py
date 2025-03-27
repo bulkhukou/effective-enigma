@@ -1,13 +1,15 @@
 def removeDuplicates(self, nums):
-    new_nums = []
-    for i in range(len(nums)):
-        if i == 0:
-            new_nums.append(nums[i])
-            continue
-        if nums[i] != nums[i-1]:
-            new_nums.append(nums[i])
-    nums = new_nums
-    k = len(nums)
-    print(k, nums)
+    n = len(nums)
+    k = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            if nums[j] == nums[i]:
+                nums[j] = 101
+    nums.sort()
+    for i in range(n):
+        if nums[i] == 101:
+            del nums[i:]
+            k = n - i
+            break
 
 removeDuplicates(self = 1, nums = [0,0,1,1,1,2,2,3,3,4])
